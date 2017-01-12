@@ -34,7 +34,7 @@ function copy_dirs {
 
 function build_base_img {
   pushd base
-  docker build -t base .
+  docker build -t ceph/base .
   rm -rf base
   popd
 }
@@ -42,7 +42,7 @@ function build_base_img {
 function build_daemon_img {
   pushd daemon
   sed -i 's|FROM .*|FROM base|g' Dockerfile
-  docker build -t daemon .
+  docker build -t ceph/daemon .
   rm -rf daemon
   popd
 }
@@ -50,7 +50,7 @@ function build_daemon_img {
 function build_demo_img {
   pushd demo
   sed -i 's|FROM .*|FROM base|g' Dockerfile
-  docker build -t demo .
+  docker build -t ceph/demo .
   rm -rf demo
   popd
 }
